@@ -16,8 +16,14 @@ find_package(Boost REQUIRED COMPONENTS program_options)
 # Find the Qt6 package
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
+# Find the OpenCASCADE package
+find_package(OpenCASCADE REQUIRED)
+
 # Add the executable
 add_executable(zero-to-nix-cpp main.cpp)
 
-# Link spdlog and Boost program_options to the executable
-target_link_libraries(zero-to-nix-cpp PRIVATE spdlog::spdlog Boost::program_options Qt6::Widgets)
+# Include directories for OpenCASCADE
+target_include_directories(zero-to-nix-cpp PRIVATE ${OpenCASCADE_INCLUDE_DIR})
+
+# Link spdlog, Boost program_options, Qt6 Widgets, and OpenCASCADE libraries to the executable
+target_link_libraries(zero-to-nix-cpp PRIVATE spdlog::spdlog Boost::program_options Qt6::Widgets ${OpenCASCADE_LIBRARIES})

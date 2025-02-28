@@ -1,5 +1,5 @@
-#include <iostream>
+#include <spdlog/spdlog.h>
 
 int main() {
-  std::cout << "Hello from Nix + C++!\n";
+  spdlog::info("Hello from Nix + C++!");
 }

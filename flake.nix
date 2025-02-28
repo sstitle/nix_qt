@@ -25,12 +25,12 @@
         default =
           let
             binName = "zero-to-nix-cpp";
-            cppDependencies = with pkgs; [ cmake gcc ];
           in
           pkgs.stdenv.mkDerivation {
             name = "zero-to-nix-cpp";
             src = ./.;
-            buildInputs = cppDependencies;
+            buildInputs = with pkgs; [ spdlog ];
+            nativeBuildInputs = with pkgs; [ cmake clang ];
             installPhase = ''
               mkdir -p $out/bin
               cp ${binName} $out/bin/${binName}

@@ -10,8 +10,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find the spdlog package
 find_package(spdlog REQUIRED)
 
+# Find the Boost program_options package
+find_package(Boost REQUIRED COMPONENTS program_options)
+
 # Add the executable
 add_executable(zero-to-nix-cpp main.cpp)
 
-# Link spdlog to the executable
-target_link_libraries(zero-to-nix-cpp PRIVATE spdlog::spdlog)
+# Link spdlog and Boost program_options to the executable
+target_link_libraries(zero-to-nix-cpp PRIVATE spdlog::spdlog Boost::program_options)

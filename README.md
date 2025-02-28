@@ -5,8 +5,8 @@ CMake with Nix
 
 Install Nix and enable flakes
 
-# Run Build
+# Build and Run
 
 ```bash
-nix run
+nix run . -- --help
 ```

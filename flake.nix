@@ -2,7 +2,7 @@
   description = "C++ example flake for Zero to Nix";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2405.*.tar.gz";
+    nixpkgs.url = "github:NixOS/nixpkgs";
   };
 
   outputs = { self, nixpkgs }:
@@ -25,16 +25,15 @@
         default =
           let
             binName = "zero-to-nix-cpp";
-            cppDependencies = with pkgs; [ boost gcc poco ];
+            cppDependencies = with pkgs; [ cmake gcc ];
           in
           pkgs.stdenv.mkDerivation {
             name = "zero-to-nix-cpp";
-            src = self;
+            src = ./.;
             buildInputs = cppDependencies;
-            buildPhase = "c++ -std=c++17 -o ${binName} ${./main.cpp} -lPocoFoundation -lboost_system";
             installPhase = ''
               mkdir -p $out/bin
-              cp ${binName} $out/bin/
+              cp ${binName} $out/bin/${binName}
             '';
           };
       });

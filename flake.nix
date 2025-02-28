@@ -29,7 +29,7 @@
           pkgs.stdenv.mkDerivation {
             name = "zero-to-nix-cpp";
             src = ./.;
-            buildInputs = with pkgs; [ spdlog boost186 ];
+            buildInputs = with pkgs; [ spdlog boost186 qt6.full ];
             nativeBuildInputs = with pkgs; [ cmake clang ];
             installPhase = ''
               mkdir -p $out/bin

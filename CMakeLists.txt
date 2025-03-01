@@ -7,6 +7,9 @@ project(zero-to-nix-cpp)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Enable generation of compile_commands.json
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Find the spdlog package
 find_package(spdlog REQUIRED)
 

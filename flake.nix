@@ -37,5 +37,11 @@
             '';
           };
       });
+
+      devShells = forAllSystems ({ pkgs }: {
+        default = pkgs.mkShell {
+          buildInputs = with pkgs; [ spdlog boost186 qt6.full cmake clang git ];
+        };
+      });
     };
 }

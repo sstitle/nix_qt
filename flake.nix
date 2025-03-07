@@ -30,17 +30,18 @@
             name = "zero-to-nix-cpp";
             src = ./.;
             buildInputs = with pkgs; [ spdlog boost186 qt6.full ];
-            nativeBuildInputs = with pkgs; [ cmake clang ];
+            nativeBuildInputs = with pkgs; [ cmake clang-tools ];
             installPhase = ''
               mkdir -p $out/bin
               cp ${binName} $out/bin/${binName}
+              cp compile_commands.json $out/compile_commands.json
             '';
           };
       });
 
       devShells = forAllSystems ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ spdlog boost186 qt6.full cmake clang git ];
+          packages = with pkgs; [ spdlog boost186 qt6.full cmake clang-tools git ];
         };
       });
     };

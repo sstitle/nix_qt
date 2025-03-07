@@ -1,5 +1,21 @@
 cmake_minimum_required(VERSION 3.31)
 
+# Find Clang compilers
+find_program(CMAKE_C_COMPILER NAMES clang)
+find_program(CMAKE_CXX_COMPILER NAMES clang++)
+
+if(NOT CMAKE_C_COMPILER)
+    message(FATAL_ERROR "clang not found")
+endif()
+
+if(NOT CMAKE_CXX_COMPILER) 
+    message(FATAL_ERROR "clang++ not found")
+endif()
+
+
+
+
+
 # Set the project name
 project(zero-to-nix-cpp)
 

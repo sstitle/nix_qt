@@ -12,7 +12,7 @@
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
 
-    // Define and parse command-line options
+    // Define and parse command-line options 
     boost::program_options::options_description desc("Allowed options");
     desc.add_options()
         ("help", "produce help message")
